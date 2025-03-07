@@ -42,6 +42,16 @@ yarn dev
 - TypeScript
 - Styled-components
 - Vite
+- JSON Server
+- React Hook Form
+- Axios
+
+## Observação
+O JSON Server na versão mais atual não aceita campo de pesquisa com formato ``https://localhost:3001/transactions?q=value``, para solucionar isso, basta instalar a versão 0.17.4:
+
+```bash
+npm i json-server@0.17.4 -D    
+```
 
 ## Estrutura do Projeto
 
