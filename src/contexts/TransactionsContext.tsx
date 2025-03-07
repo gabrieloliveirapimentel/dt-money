@@ -1,41 +1,28 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-
-interface ITransaction {
-    id: number;
-    description: string;
-    type: 'income' | 'outcome';
-    price: number;
-    category: string;
-    createAt: string;
-}
-
-interface ITransactionContextType {
-    transactions: ITransaction[];
-}
-
-interface ITransactionProviderProps {
-    children: ReactNode;
-}
-
-export const TransactionsContext = createContext({} as ITransactionContextType)
+import { useEffect, useState } from "react";
+import { ITransaction, ITransactionProviderProps, TransactionsContext } from "./types";
 
 export function TransactionProvider({ children }: ITransactionProviderProps) {
     const [transactions, setTransactions] = useState<ITransaction[]>([])
 
-    async function loadTransactions() {
-        const response = await fetch('http://localhost:3333/transactions')
+    async function fetchTransactions(query?: string) {
+        const url = new URL('http://localhost:3333/transactions');
+
+        if (query) {
+            url.searchParams.append('q', query);
+        }
+        
+        const response = await fetch(url);
         const data = await response.json();
 
         setTransactions(data);
     }
 
-
     useEffect(() => {
-        loadTransactions()
+        fetchTransactions()
     }, [])
 
     return (
-        <TransactionsContext.Provider value={{ transactions }}>
+        <TransactionsContext.Provider value={{ transactions, fetchTransactions}}>
             {children}
         </TransactionsContext.Provider>
     )

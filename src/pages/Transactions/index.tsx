@@ -8,7 +8,7 @@ import {
 import { Header } from "../../components/Header"
 import { Summary } from "../../components/Summary"
 import { SearchForm } from "./components/SearchForm"
-import { TransactionsContext } from "../../contexts/TransactionsContext"
+import { TransactionsContext } from "../../contexts/types"
 import { dateFormatter, priceFormatter } from "../../utils/formatter"
 
 export function Transactions() {

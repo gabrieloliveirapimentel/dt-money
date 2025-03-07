@@ -19,10 +19,7 @@ export const SearchFormContainer = styled.form`
     }
 
     button {
-        width: 120px;
-        
         display: flex;
-        justify-content: center;
         align-items: center;
 
         gap: 0.75rem;
@@ -33,9 +30,7 @@ export const SearchFormContainer = styled.form`
 
         font-weight: bold;
         border-radius: 6px;
-    }
 
-    button[type="submit"] {
         color: ${props => props.theme.white};
         background-color: ${props => props.theme['green-500']};
 
@@ -48,23 +43,6 @@ export const SearchFormContainer = styled.form`
             background: ${props => props.theme['green-700']};
             border-color: ${props => props.theme['green-700']};
             color: ${props => props.theme.white};
-
-            transition: background-color 0.5s, color 0.5s, border-color 0.5s;
-        }
-    }
-
-    button[type="reset"] {
-        background: transparent;
-        color: ${props => props.theme['green-300']};
-        
-        &:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        
-        &:not(:disabled):hover {
-            border-color: ${props => props.theme['green-500']};
-            color: ${props => props.theme['green-500']};
 
             transition: background-color 0.5s, color 0.5s, border-color 0.5s;
         }
