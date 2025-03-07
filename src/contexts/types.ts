@@ -6,12 +6,20 @@ export interface ITransaction {
     type: 'income' | 'outcome';
     price: number;
     category: string;
-    createAt: string;
+    createdAt: string;
+}
+
+export interface ICreateTransactionInput {
+    description: string;
+    price: number;
+    category: string;
+    type: 'income' | 'outcome';
 }
 
 export interface ITransactionContextType {
     transactions: ITransaction[];
     fetchTransactions: (query?: string) => Promise<void>;
+    createTransaction: (data: ICreateTransactionInput) => Promise<void>;
 }
 
 export interface ITransactionProviderProps {
