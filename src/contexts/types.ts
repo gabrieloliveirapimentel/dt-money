@@ -1,4 +1,5 @@
-import { createContext, ReactNode } from "react";
+import { ReactNode } from "react";
+import { createContext } from "use-context-selector";
 
 export interface ITransaction {
     id: number;
